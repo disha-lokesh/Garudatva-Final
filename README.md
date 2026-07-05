@@ -1,122 +1,367 @@
-# Mobile Security Framework (MobSF)
+# Garudatva: A Legally Compliant Dual-Node Forensic Pipeline
 
-![](https://cloud.githubusercontent.com/assets/4301109/20019521/cc61f7fc-a2f2-11e6-95f3-407030d9fdde.png)
+![Garudatva Banner](https://img.shields.io/badge/Garudatva-Forensic%20Pipeline-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)
+![Status](https://img.shields.io/badge/status-Production%20Ready-brightgreen.svg)
 
-Mobile Security Framework (MobSF) is a security research platform for mobile applications in Android, iOS and Windows Mobile. MobSF can be used for a variety of use cases such as mobile application security, penetration testing, malware analysis, and privacy analysis. The Static Analyzer supports popular mobile app binaries like APK, IPA, APPX and source code. Meanwhile, the Dynamic Analyzer supports both Android and iOS applications and offers a platform for interactive instrumented testing, runtime data and network traffic analysis. MobSF seamlessly integrates with your DevSecOps or CI/CD pipeline, facilitated by REST APIs and CLI tools, enhancing your security workflow with ease.
+**Garudatva** is a groundbreaking dual-node forensic analysis platform that bridges the critical gap between **Code** and **Court**. It combines advanced malware analysis, threat intelligence, and forensic investigation with rigorous legal compliance to meet Indian judicial standards.
 
-Made with ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82e3a63c-4813-11e6-9430-6015d98aeaab.png) in India
+> *"Garudatva is not just a malware scanner; it is a legally compliant, dual-node forensic pipeline that bridges the gap between Code and Court."*
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/opensecurity/mobile-security-framework-mobsf?style=social)](https://hub.docker.com/r/opensecurity/mobile-security-framework-mobsf/) [![python](https://img.shields.io/badge/python-3.12+-blue.svg?logo=python&labelColor=yellow)](https://www.python.org/downloads/)
-[![PyPI version](https://badge.fury.io/py/mobsf.svg)](https://badge.fury.io/py/mobsf)
-[![platform](https://img.shields.io/badge/platform-osx%2Flinux%2Fwindows-green.svg)](https://github.com/MobSF/Mobile-Security-Framework-MobSF/)
-[![License](https://img.shields.io/:license-GPL--3.0--only-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
-[![MobSF tests](https://github.com/MobSF/Mobile-Security-Framework-MobSF/workflows/MobSF%20tests/badge.svg?branch=master)](https://github.com/MobSF/Mobile-Security-Framework-MobSF/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MobSF_Mobile-Security-Framework-MobSF&metric=alert_status)](https://sonarcloud.io/dashboard?id=MobSF_Mobile-Security-Framework-MobSF)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/MobSF/Mobile-Security-Framework-MobSF)
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6392/badge)](https://bestpractices.coreinfrastructure.org/projects/6392)
+---
 
+## 🎯 Core Vision
 
-[![ToolsWatch Best Security Tools 2016](https://img.shields.io/badge/ToolsWatch-Rank%205%20%7C%20Year%202016-red.svg)](http://www.toolswatch.org/2017/02/2016-top-security-tools-as-voted-by-toolswatch-org-readers/)
-[![ToolsWatch Best Security Tools 2017](https://img.shields.io/badge/ToolsWatch-Rank%209%20%7C%20Year%202017-red.svg)](http://www.toolswatch.org/2018/01/black-hat-arsenal-top-10-security-tools/)
-[![Blackhat Arsenal Asia 2015](https://img.shields.io/badge/Black%20Hat%20Arsenal-Asia%202015-blue.svg)](https://www.blackhat.com/asia-15/arsenal.html#yso-mobile-security-framework)
-[![Blackhat Arsenal Asia 2018](https://img.shields.io/badge/Black%20Hat%20Arsenal-Asia%202018-blue.svg)](https://www.blackhat.com/asia-18/arsenal.html#mobile-security-framework-mobsf)
-[![Blackhat Arsenal Europe 2023](https://img.shields.io/badge/Black%20Hat%20Arsenal-Europe%202023-blue.svg)](https://www.blackhat.com/eu-23/arsenal/schedule/index.html#mobile-security-framework---mobsf-35327)
+Garudatva addresses a fundamental problem: **Indian law enforcement lacks a unified, court-admissible platform for analyzing sophisticated malware while maintaining forensic integrity and legal compliance.** 
 
+Our solution transforms raw forensic analysis into legally defensible evidence through:
+- **Dual-Node Architecture**: Air-gapped sandbox for analysis + internet-connected threat intel node
+- **Deep Code Analysis**: Dynamic + static analysis with ML-powered threat classification
+- **Threat Fingerprinting**: JA4+ client fingerprinting and JARM server profiling for C2 attribution
+- **Anti-Forensics Detection**: Timestomping and data wiper detection via MFT/USN analysis
+- **Legal Compliance**: Automated evidence chain generation compliant with BNSS, BSA, IT Act, and UAPA
 
-MobSF is also bundled with [Android Tamer](https://tamerplatform.com), [BlackArch](https://blackarch.org/mobile.html) and [Pentoo](https://www.pentoo.ch/).
+---
 
-### Support MobSF
+## 🏗️ Architecture Overview
 
-[![Donate to MobSF](https://user-images.githubusercontent.com/4301109/117404264-7aab5480-aebe-11eb-9cbd-da82d7346bb3.png)](https://opensecurity.in/donate)
+### **Workstation A: Air-Gapped Sandbox (Forensic Isolation)**
+- Completely offline malware detonation environment
+- QEMU/KVM hypervisor + Android Virtual Device (AVD) for APK execution
+- MonkeyRunner automation for systematic payload triggering
+- Frida hooking for deep runtime introspection
+- Custom QR-bridge encoder for secure C2 extraction
 
+### **Workstation B: Threat Intelligence Node (Connected)**
+- Internet-connected threat reconnaissance platform
+- JARM fingerprinting server profiling
+- Cloud infrastructure sweeps (AWS, GCP, Azure, Cloudflare)
+- Masscan-based IP range hunting
+- External network probing and attribution
 
-> Has MobSF made a difference for you? Show your support and help us innovate with a donation. It's easy to build open source, maintaining one is a different story. 
+### **Secure Bridge: QR-Encoded Data Transfer**
+- Custom Python/JavaScript QR codec
+- Bridges air-gapped and connected nodes without compromise
+- Encodes extracted C2 IP addresses into dense QR codes
+- Webcam-based scanning for automated threat data handoff
 
-*Long live open source!*
+---
 
-## Documentation
+## 🔍 Key Features
 
-Quick setup with docker
+### **1. Dynamic & Static Analysis Engine**
+- **MonkeyRunner Integration**: Automated pseudo-random UI interaction to trigger malware payloads
+- **System Call Profiling**: `strace` integration for comprehensive PID-level syscall frequency logging
+- **Deep Frida Hooking**:
+  - `okhttp3.internal.http.RealInterceptorChain.proceed()` for network interception
+  - `javax.crypto.Cipher.init` & `doFinal` for cryptographic key capture
+  - Hashcode-based payload-to-key correlation
+- **ML-Powered Classification**: Random Forest classifier (100 trees, Information Gain) filtering Android permissions to 87 critical features
+
+### **2. Threat Reconnaissance & Fingerprinting**
+- **JA4+ Client Fingerprinting**: Passive TLS Client Hello analysis within air-gapped sandbox
+- **JARM Server Profiling**: Crafted TLS handshake probes for C2 server identification
+- **CSP IP Sweeps**: Asynchronous scanning of public cloud provider ranges for JARM matches
+
+### **3. Anti-Forensics Detection Module**
+- **Timestomping Detection**: MFTECmd-based MFT parsing with `$STANDARD_INFORMATION` vs `$FILE_NAME` comparison
+- **Data Wiper Detection**: USN Journal and Prefetch artifact monitoring for secure deletion attempts
+
+### **4. Legal & Evidentiary Compliance Framework**
+
+#### **Case Initialization (Om Prakash Verma Compliance)**
+- Mandatory device IMEI, brand, and manufacturing details logging
+- Physical device-to-digital evidence chain establishment
+
+#### **BNSS Section 176(3) Compliance**
+- Crime scene videography ingestion with geolocation metadata
+- Structured evidence preservation workflows
+
+#### **Zero-Dependency Hash Chains (Web Crypto API)**
+- Canonical JSON serialization (alphabetical key sorting)
+- UUIDv7-based chronological audit logs
+- Tamper-detection via pure SHA-256 verification
+
+#### **BSA Section 63 Compliance**
+- Automated PDF certificate generation for computer functioning verification
+- Self-executing audit trails
+
+#### **UAPA Section 46 Tagging**
+- Automatic disclaimer markup: *"Admissible under Section 46 of the UAPA Act"*
+- C2 traffic preemptive privacy classification
+
+#### **IT Act Section 79A Workflow**
+- Dual-officer signature enforcement (Reporting Officer + Reviewing Officer)
+- Examiner of Electronic Evidence certification
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+```bash
+# System Requirements
+- Workstation A: Offline Linux machine with QEMU/KVM, 16GB+ RAM
+- Workstation B: Online Linux machine with Masscan, Nmap, network probes
+- AVD Android emulator installed and configured
+- Frida and Frida-server binaries
+```
+
+### Installation (Workstation A - Sandbox)
+```bash
+git clone https://github.com/disha-lokesh/Garudatva-Final.git
+cd Garudatva-Final
+
+# Install Python dependencies
+pip install -r requirements-sandbox.txt
+
+# Initialize AVD
+python setup_avd.py
+
+# Test air-gap QR bridge
+python qr_bridge_encoder.py --test
+```
+
+### Installation (Workstation B - Threat Intel)
+```bash
+# Install scanning tools
+apt-get install masscan nmap jq
+
+# Install Python dependencies
+pip install -r requirements-threatintel.txt
+
+# Initialize threat intel modules
+python setup_threatintel.py
+```
+
+### Basic Analysis Workflow
+```bash
+# Step 1: Load APK on Workstation A
+python load_apk.py --apk suspicious_app.apk
+
+# Step 2: Execute MonkeyRunner with Frida hooks
+python execute_analysis.py --hooks cryptography,network --duration 300
+
+# Step 3: Extract logs and encode C2 data via QR
+python extract_and_encode.py --output-qr threat_data.qr
+
+# Step 4: Scan QR on Workstation B and launch threat intel
+python scan_qr_and_hunt.py --qr-image threat_data.qr
+
+# Step 5: Generate legally compliant report
+python generate_legal_report.py --case-id "2026-CIDECODE-001" --output report.pdf
+```
+
+---
+
+## 📋 Project Structure
 
 ```
-docker pull opensecurity/mobile-security-framework-mobsf:latest
-docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
-
-# Default username and password: garudatva/garudatva
+Garudatva-Final/
+├── sandbox/
+│   ├── avd_setup/               # Android Virtual Device configuration
+│   ├── frida_hooks/             # Deep Frida instrumentation scripts
+│   │   ├── cryptography.js
+│   │   ├── network_intercept.js
+│   │   └── syscall_profiler.js
+│   ├── monkeyrunner/            # Automated APK interaction
+│   ├── qr_bridge/               # QR encoder/decoder for air-gap data transfer
+│   └── analysis_engine/         # Core analysis orchestration
+├── threatintel/
+│   ├── jarm_profiler/           # Server fingerprinting
+│   ├── masscan_sweeper/         # Cloud IP range hunting
+│   ├── ja4_classifier/          # Client fingerprinting
+│   └── csp_modules/             # AWS/GCP/Azure/Cloudflare scanners
+├── forensics/
+│   ├── anti_forensics/
+│   │   ├── mft_parser/          # Timestomping detection
+│   │   └── usn_analyzer/        # Data wiper detection
+│   └── ml_classifier/           # Permission-based threat classification
+├── legal/
+│   ├── compliance_engine/
+│   │   ├── case_wizard/         # BNSS Section 176(3)
+│   │   ├── audit_chain/         # Hash chain generation
+│   │   └── certificates/        # BSA Section 63 PDF generation
+│   └── report_generator/        # Dual-officer signature workflow
+├── config/
+│   ├── legal_compliance.yaml    # Jurisdiction-specific rules
+│   └── ml_models/               # Trained Random Forest classifier
+└── tests/                       # Integration & unit tests
 ```
 
-[![See MobSF Documentation](https://user-images.githubusercontent.com/4301109/70686099-3855f780-1c79-11ea-8141-899e39459da2.png)](https://mobsf.github.io/docs)
+---
 
-* Try MobSF Static Analyzer Online: [mobsf.live](https://mobsf.live)
-* MobSF in CI/CD: [mobsfscan](https://github.com/MobSF/mobsfscan)
-* Conference Presentations: [Slides & Videos](https://mobsf.github.io/Mobile-Security-Framework-MobSF/presentations.html)
-* MobSF Online Course: [OpSecX MAS](https://opsecx.com/index.php/product/automated-mobile-application-security-assessment-with-mobsf/)
-* What's New: [See Changelog](https://mobsf.github.io/Mobile-Security-Framework-MobSF/changelog.html)
+## 📊 Analysis Output
 
-## Collaborators
+### **Dynamic Analysis Report**
+```json
+{
+  "malware_name": "TrojanSpy.APK",
+  "c2_servers": [
+    {
+      "ip": "192.168.1.100",
+      "port": 8443,
+      "protocol": "TLS 1.2",
+      "jarm_fingerprint": "27d3ed7ed0e...",
+      "cloud_provider": "AWS (us-east-1)"
+    }
+  ],
+  "cryptographic_keys": [
+    {
+      "key_hash": "aes256_key_0x7f...",
+      "algorithm": "AES-256-GCM",
+      "payload_count": 47,
+      "intercepted_packets": 156
+    }
+  ],
+  "network_interceptions": [
+    {
+      "timestamp": "2026-07-05T14:23:45Z",
+      "source": "192.168.1.50:54321",
+      "destination": "192.168.1.100:8443",
+      "data_size": 2048,
+      "encryption_status": "encrypted"
+    }
+  ]
+}
+```
 
-[Ajin Abraham](https://in.linkedin.com/in/ajinabraham) ![india](https://user-images.githubusercontent.com/4301109/37564171-6549d678-2ab6-11e8-9b9d-21327c7f5d5b.png)  | [Magaofei](https://github.com/magaofei) ![china](https://user-images.githubusercontent.com/4301109/44515364-00bbe880-a6e0-11e8-944d-5b48a86427da.png) | [Matan Dobrushin](https://github.com/matandobr) ![israel](https://user-images.githubusercontent.com/4301109/37564177-782f1758-2ab6-11e8-91e5-c76bde37b330.png) | [Vincent Nadal](https://github.com/superpoussin22) ![france](https://user-images.githubusercontent.com/4301109/37564175-71d6d92c-2ab6-11e8-89d7-d21f5aa0bda8.png)
+### **Legal Report (Court-Ready)**
+```
+DIGITAL EVIDENCE ANALYSIS REPORT
+Case ID: 2026-CIDECODE-001
+Investigation Officer: [BNSS §176(3) Verified IMEI: ...]
 
-## e-Learning Courses & Certifications
-![MobSF Course](https://user-images.githubusercontent.com/4301109/76344880-ad68b580-62d8-11ea-8cde-9e3475fc92f6.png) [Automated Mobile Application Security Assessment with MobSF -MAS](https://opsecx.com/index.php/product/automated-mobile-application-security-assessment-with-mobsf/)
+═══════════════════════════════════════
+CHAIN OF CUSTODY (SHA-256 Hash Chain)
+═══════════════════════════════════════
+Event 1: Device Acquisition
+  Timestamp: 2026-07-05T10:00:00Z
+  Hash: 3a7f2b1c9e4d...
+  Status: ✓ Verified
 
-![Android Security Tools Course](https://user-images.githubusercontent.com/4301109/76344939-c709fd00-62d8-11ea-8208-774f1d5a7c52.png) [Android Security Tools Expert -ATX](https://opsecx.com/index.php/product/android-security-tools-expert-atx/)
+Event 2: Malware Extraction
+  Timestamp: 2026-07-05T10:15:22Z
+  Hash: 8f2e1a4c7b9d...
+  Status: ✓ Verified
 
-## MobSF Support
+Event 3: Analysis Completed
+  Timestamp: 2026-07-05T14:30:00Z
+  Hash: c1d5f3a9e2b4...
+  Status: ✓ Verified
 
-* **Free Support:** Free limited support, questions, help and discussions, join our Slack channel [![Join_MobSF_Slack](https://img.shields.io/badge/mobsf%20slack-join-green?logo=slack&labelColor=4A154B)](https://join.slack.com/t/mobsf/shared_invite/zt-3ephptj6c-OuDMatJ9z9MT0T_Vb~l2pg)
-* **Enterprise Support:** Priority feature requests, live support & onsite training, see [![MobSF Support Packages](https://img.shields.io/badge/enterprise-support%20package-blue?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABaCAMAAACbkBjCAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAkNQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////o1yoNQAAAMF0Uk5TAAQ1YH6IXzYFAUqq9P/1rU4CPdHWQ4X+jgOkro+hVWYR6vIajJvz+XN/z9sjLW6lrNPX+PsGHyE5TE9XWV1hW0k6LC7hs7SEhgr2sGRiFBCXJf38sgwOtmpoIiDf68vSGS+Z9yeR70RNvUEVfOa/WgdCR8XuUeeA8Du7Vporrx66SwlcqWV92g2HY+2Ki/GQJjxpM8TVcIGodjJ3ybETJOjUyiop4sxYkkVSGJ/pD6cdwlTOHNnIZ+B13bXkKL7NMOC0/xQAAAPPSURBVHic7dn5PxVRFADwY0sPN0t4Uj0vLQq9lkelRVFRKklZs+RRiiTtSbRoD9GuhdK+Ky3S9qf1Zu68bczcO5rjhz4f5yfnOud9mTszd+Y+gLH4f8PL28fXz893nP/4UQIMAYFBRIoJwSGho0CETSQeER6BLYRGGoksjFGTcIlouSDEZNRpmaJEEDIVkTApE4TEoBHmaWpG7HQsY4YaQchMJMI8S92IQ/pHZqsThMzBMeJZRgIKkcgiCJmLYcSwDQuGMY9tzMcwFrCNhQiEl5VtJCXrNxaxCUIW6zf8ecYS/UYKz1iq31jGM5brN1bwDB/9RirPQFhDuMdqpX5jFc9I0W+k8Yww/UY6z1it3zDzDLN+A9awiTUIBKxlGxkYRibbWIdhLGUbCLcrgPUTWETWegyDPSEbUAjYyDI24RjZWepE7GYcA3LUjSlIBGzJVSO2JmIZsG2UZ1wI1TUEYZ11RJ7KrFvz8Qy1S6QAkYBCZaMI0yhWNrZjGlCiRJSiElCmZJSPGWOGrtiheKFjGhW2yiVVO+XL+i6bz9pqHCB09x77B9YA1O6tcwHGffX7oYGQsnr9+2R5MeHiZx4QkmTTQSocsqUL+WHh5yNHs3UJxVHHpL87RBo5HphkbDwhvS770N9lNZ38Z6Gm2bXGmpyjLa7l1eI8cqdO/8tW7JmNHnutZ6XhtJzA1nOOx7bzbgUXLBdHKLRcKvU8iS4Lo2YL3de4cpXe1Ns8Sto7ro1A6AxMkl8KXQDXbc5tapLbuNsA0CSvumHy0gTkF96Ut9rjFtyWjRwFuDO8ruRuLVfoblLePLwH4bKRmwAFSpXW6E4WYC66rwjYw3fYY8MDgIMqxeWWh8qAobq1Uk0gJBJ6ej0GensAHqmWW1urDQoH6bE6YI82gD53pPeJvecpq+OZt5x4ztkJewEeSG+f0NTObIlL9SReDjtZZWEDd4QSoaqP2jRyX7kTr49wCPJGrKuqE5O34h0R3vGaYqvcjAxeNXlPC+k7biZNPnC7+l1EA7eYBNPKVjG5QxPuLgchH51GP79YetP/JCbxNDnOb5voIE7ya0kjvYboTSCInvsBGvocG5odGmrpkR2QsgF6vmvos0nGZw21X8TKCClrELOvGvq+UYK7SSwEnYIiKesSs0EtjXSl6dZSGi6WOr5ei3I7kTnRrd34LpYOSdmQmL1ANn6IpQlSRr+8mYpsiK9MyY672lbx4acZ2WgXKp84059C+gvZsAqVrt0ycWPsN7JhNHicrIPus6PBMJu0hPAcWOHM/giNKVr6zDAWI4i/nmw15nhs85kAAAAASUVORK5CYII=)](https://opensecurity.in/#support)
+═══════════════════════════════════════
+ADMISSIBILITY CERTIFICATION
+═══════════════════════════════════════
+✓ Bharatiya Sakshya Adhiniyam (BSA) §63
+✓ Bharatiya Nyaya Sanhita (BNSS) §176(3)
+✓ Information Technology Act §79A
+✓ Unlawful Activities (Prevention) Act §46
 
+Reporting Officer: _________________
+Reviewing Officer: __________________
+Date: 2026-07-05
+```
 
-## Contribution, Feature Requests & Bugs
+---
 
-* Read [CONTRIBUTING.md](https://github.com/MobSF/Mobile-Security-Framework-MobSF/blob/master/.github/CONTRIBUTING.md) before opening bugs, feature requests and pull request.
-* For Project updates and announcements, follow [@ajinabraham](https://twitter.com/ajinabraham) or [@OpenSecurity_IN](https://twitter.com/OpenSecurity_IN).
-* Github Issues are only for tracking bugs and feature requests. Do not post support or help queries there. We have a slack channel for that.
+## 🎓 Use Cases
 
-### Static Analysis - Android
+1. **Law Enforcement**: Investigate sophisticated mobile malware with court-ready evidence
+2. **Cybersecurity Researchers**: Analyze APK malware families with rigorous forensic methods
+3. **Digital Forensics Experts**: Detect anti-forensics attempts and preserve evidence integrity
+4. **Legal Compliance**: Generate admissible evidence for criminal prosecution under Indian law
 
-![mobsf_android_static_analysis](https://user-images.githubusercontent.com/4301109/95506503-f9b6c980-097d-11eb-803a-f88321e1feb7.gif)
+---
 
-### Static Analysis - iOS
+## 🛡️ Security & Forensic Integrity
 
-![mobsf_ios_ipa_static_analysis](https://user-images.githubusercontent.com/4301109/95507865-16540100-0980-11eb-9e4d-887668d46969.gif)
+- **Air-Gap Architecture**: Complete isolation between analysis and threat intel phases
+- **Forensic Isolation**: No internet connectivity during malware execution
+- **Cryptographic Verification**: SHA-256 hash chains prevent evidence tampering
+- **Anti-Forensics Detection**: Built-in mechanisms to catch malware evasion attempts
+- **Legal Chain of Custody**: Every step documented and verified for court admissibility
 
-### Dynamic Analysis - Android APK
+---
 
-![mobsf_android_dynamic_analysis](https://user-images.githubusercontent.com/4301109/95514697-5e782100-098a-11eb-8390-47bb3822a2d7.gif)
+## 📚 Legal Compliance
 
-### Web API Viewer
+Garudatva is designed to comply with:
+- **Bharatiya Nyaya Sanhita (BNSS)** – Criminal Procedure Code
+- **Bharatiya Sakshya Adhiniyam (BSA)** – Evidence Act
+- **Information Technology Act, 2000** – Digital Evidence Rules
+- **Unlawful Activities (Prevention) Act, 1967** – Section 46 (Intercepted Communication Admissibility)
 
-![mobsf_web_api_fuzzing_with_burp](https://user-images.githubusercontent.com/4301109/95516560-69808080-098d-11eb-9e0b-fb5a25e96585.gif)
+---
 
-### Dynamic Analysis - iOS IPA
+## 🏆 Built for CIDECODE 2026
 
-![mobsf_ios_dynamic_analysis](https://github.com/MobSF/Mobile-Security-Framework-MobSF/assets/4301109/34014c4d-1535-48ad-9944-a4b1b728a030)
+Garudatva was architected and developed as the flagship submission for **CIDECODE 2026 Hackathon**—India's premier cybercrime detection and investigation challenge.
 
-## Past Collaborators
+**Our Unique Selling Proposition:**
+- Only platform combining advanced malware analysis with judicial compliance
+- Bridges India's law enforcement gap between technical forensics and legal admissibility
+- Production-ready dual-node architecture with court-admissible evidence chains
 
-* [Dominik Schlecht](https://github.com/sn0b4ll) ![germany](https://user-images.githubusercontent.com/4301109/37564176-743238ba-2ab6-11e8-9666-5d98f0a1d127.png)
+---
 
-## Honorable Contributors & Shoutouts
+## 👥 Team & Contributors
 
-* Amrutha VC - For the new MobSF logo
-* Dominik Schlecht - For the awesome work on adding Windows Phone App Static Analysis to MobSF
-* Esteban - Better Android Manifest Analysis and Static Analysis Improvement.
-* Matan Dobrushin - For adding Android ARM Emulator support to MobSF - Special thanks goes for cuckoo-droid
-* Shuxin - Android Binary Analysis
-* Abhinav Saxena - (@xandfury) - For Travis CI and Logging integration
-* ![netguru](https://user-images.githubusercontent.com/4301109/76340877-a3dc4f00-62d2-11ea-8631-b4cc8d9e42ed.png) [Netguru](https://www.netguru.com/) (@karolpiateknet, @mtbrzeski) - For iOS Swift support, Rule contributions and SAST refactoring.
-* Maxime Fawe - (@Arenash13) - For Matching Strategy implementation of SAST pattern matching algorithms.
-* Abhinav Sejpal (@Abhinav_Sejpal) - For poking me with bugs, feature requests, and UI & UX suggestions
-* Anant Srivastava (@anantshri) - For Activity Tester Idea
-* Anto Joseph (@antojoseph) - For the help with SuperSU
-* Bharadwaj Machiraju (@tunnelshade) - For writing pyWebProxy from scratch
-* Rahul (@c0dist) - Kali Support
-* MindMac - For writing Android Blue Pill
-* Oscar Alfonso Diaz - (@OscarAkaElvis) - For Dockerfile contributions
-* Thomas Abraham - For JS Hacks on UI
-* Tim Brown (@timb_machine) - For the iOS Binary Analysis Ruleset
-* Shanil Prasad (@Rajuraju14) - For improving iOS ATS Analysis
-* Jovan Petrovic (@JovanPetrovic) - For sponsoring a server to host mobsf.live
-# Garudatva-Final
+**Development Team**: Disha Lokesh and Contributors  
+**Research Advisor**: Cybersecurity & Digital Forensics Specialists  
+**Legal Consultant**: Indian Judicial Compliance Expert
+
+---
+
+## 📖 Documentation
+
+- [Architecture Deep Dive](./docs/ARCHITECTURE.md)
+- [Legal Compliance Guide](./docs/LEGAL_COMPLIANCE.md)
+- [Frida Hooking Guide](./docs/FRIDA_GUIDE.md)
+- [Threat Intelligence Workflow](./docs/THREATINTEL_WORKFLOW.md)
+- [Case Study: Real-World Malware Analysis](./docs/CASE_STUDIES.md)
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before submitting issues, feature requests, or pull requests.
+
+### Areas for Contribution:
+- Additional Frida hooking modules for specific malware families
+- Enhanced ML classification algorithms
+- Additional cloud provider scanners (Azure, Alibaba, etc.)
+- UI/UX improvements for the dashboard
+- Localization for additional Indian jurisdictions
+
+---
+
+## 📝 License
+
+Garudatva is licensed under the **GNU General Public License v3.0** – See [LICENSE](./LICENSE) for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- Indian law enforcement and cybercrime investigation community
+- Open-source security research pioneers
+- Legal compliance experts who shaped our evidentiary framework
+- The CIDECODE 2026 organizing committee for inspiring innovation in digital forensics
+
+---
+
+## 📞 Support & Contact
+
+- **GitHub Issues**: For bug reports and feature requests
+- **Documentation**: Full guides available in `/docs`
+- **Legal Questions**: Consult the [Legal Compliance Guide](./docs/LEGAL_COMPLIANCE.md)
+
+---
+
+**Made with 🔐 Security & ⚖️ Justice in India**
+
+---
+
+*Last Updated: July 5, 2026*  
+*Version: 3.0.0 (CIDECODE 2026 Release)*
